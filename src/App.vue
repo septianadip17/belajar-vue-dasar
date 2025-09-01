@@ -18,7 +18,5 @@ const message = "Hello Vue"
   <!-- v-model -->
   <input v-model="message" />
   <p>Pesan: {{ message }}</p>
-  <HelloWorld name="Budi" />
-  <HelloWorld name="Siti" />
-  <HelloWorld name="Andi" />
+  <HelloWorld name="Budi" age="30" isAdmin />
 </template>
