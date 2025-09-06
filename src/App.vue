@@ -1,20 +1,50 @@
-<script setup>
-import { reactive } from "vue"
+<template>
+  <div class="container">
+    <!-- Counter -->
+    <h2>Counter</h2>
+    <p>Angka: {{ count }}</p>
+    <button @click="count++">Tambah</button>
+    <button @click="count--">Kurang</button>
+    <hr />
 
+    <!-- Form User -->
+    <h2>Form User</h2>
+    <form @submit.prevent="submitForm">
+      <input v-model="user.name" placeholder="Nama" />
+      <input v-model="user.age" type="number" placeholder="Umur" />
+      <button type="submit">Simpan</button>
+    </form>
+
+    <p>Output:</p>
+    <p>Nama: {{ user.name }}</p>
+    <p>Umur: {{ user.age }}</p>
+  </div>
+</template>
+
+<script setup>
+import { ref, reactive } from "vue"
+
+// Counter pakai ref
+const count = ref(0)
+
+// User pakai reactive
 const user = reactive({
-  name: "Budi",
-  age: 20
+  name: "",
+  age: null,
 })
 
-const tambahUmur = () => {
-  user.age++
+const submitForm = () => {
+  alert(`Nama: ${user.name}, Umur: ${user.age}`)
 }
 </script>
 
-<template>
-  <div>
-    <p>Nama: {{ user.name }}</p>
-    <p>Umur: {{ user.age }}</p>
-    <button @click="tambahUmur">Tambah Umur</button>
-  </div>
-</template>
+<style>
+.container {
+  font-family: sans-serif;
+  padding: 20px;
+}
+
+button {
+  margin: 5px;
+}
+</style>
